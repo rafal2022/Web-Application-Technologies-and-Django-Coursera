@@ -1,48 +1,18 @@
-Django for Everybody Database Handout - Command line SQLite
-
-https://www.dj4e.com/lectures/SQL-01-Basics.txt
-
-Start the command line in a Linux/Bash shell:
-
-sqlite3 zip.sqlite3
-
-Exit with ".quit", statements end with a semicolon.
-
-.mode column
-
-CREATE TABLE "Users" (
-    "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, 
-    "name" TEXT,
-    "email" TEXT
+$ cd ~
+$ sqlite3 pitch.sqlite3
+SQLite version 3.24.0 2018-06-04 14:10:15
+Enter ".help" for usage hints.
+sqlite>
+CREATE TABLE Ages ( 
+  id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+  name VARCHAR(128), 
+  age INTEGER
 );
-
-.tables
-
-.schema Users
-
-INSERT INTO Users (name, email) VALUES ('Kristen', 'kf@umich.edu');
-INSERT INTO Users (name, email) VALUES ('Chuck', 'csev@umich.edu');
-INSERT INTO Users (name, email) VALUES ('Colleen', 'cvl@umich.edu');
-INSERT INTO Users (name, email) VALUES ('Ted', 'ted@umich.edu');
-INSERT INTO Users (name, email) VALUES ('Sally', 'a1@umich.edu');
-
-SELECT * FROM Users;
-
-DELETE FROM Users WHERE email='ted@umich.edu';
-
-SELECT * FROM Users;
-
-UPDATE Users SET name="Charles" WHERE email='csev@umich.edu';
-
-SELECT * FROM Users;
-
-SELECT * FROM Users WHERE email='csev@umich.edu';
-
-SELECT * FROM Users ORDER BY email;
-
-SELECT * FROM Users ORDER BY name DESC;
-
-If you want: DROP TABLE Users 
-
-.quit
-
+DELETE FROM Ages;
+INSERT INTO Ages (name, age) VALUES ('Alani', 19);
+INSERT INTO Ages (name, age) VALUES ('Cacie', 37);
+INSERT INTO Ages (name, age) VALUES ('Riach', 32);
+INSERT INTO Ages (name, age) VALUES ('Caolain', 14);
+INSERT INTO Ages (name, age) VALUES ('Keiara', 14);
+INSERT INTO Ages (name, age) VALUES ('Lepeng', 35);
+SELECT hex(name || age) AS X FROM Ages ORDER BY X;
